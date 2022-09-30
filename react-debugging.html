@@ -64,12 +64,38 @@
         }
         // No need to change anything ABOVE this line ^
 
-        return (
+      // First I copied and commented out this section so I could check to make sure what the original was, to make sure that I actually made three changes, and most importantly to make sure I have a backup in case I break everything.
+      
+      //   return (
+      //     <h1>Draw a Card</h1>
+      //     <button onClick={}>
+      //       Click to Draw a Card
+      //     </button>
+      //     <button onclick={shuffle}>
+      //       Return Cards and Shuffle Deck
+      //     </button>
+      //     <div style={handStyles}>
+      //       {hand.map((card, index) => {
+      //         return (
+      //           <div style={cardStyles} key={index}>
+      //             {card}
+      //           </div>
+      //         )
+      //       })}
+      //     </div>
+      //   )
+      // }
+
+      return (
+        // First thing I noticed was the missing <></> fragments, so I added one at the very top and one below the final </div> tag.
+        <>
           <h1>Draw a Card</h1>
-          <button onClick={}>
+          <button onClick={drawCard}>
+            {/*After adding the fragments, the page was still blank until I noticed there was nothing inside of onClick{} for the Draw a Card prompt. Scrolling up, I see the function drawCard is what we needed in there, and after adding that I see a beautiful html page that allows me to draw a card. (but not shuffle and return them yet) */}
             Click to Draw a Card
           </button>
-          <button onclick={shuffle}>
+          <button onClick={shuffle}>
+            {/*Lastly, looking in the console log for errors, I see the incredibly straightforward and helpful error warning "Invalid event handler property `onclick`. Did you mean `onClick`?"" Yes I do believe we meant onClick here, so capitalizing the C fixes the shuffle function, and everything now works correctly :)*/}
             Return Cards and Shuffle Deck
           </button>
           <div style={handStyles}>
@@ -80,7 +106,9 @@
                 </div>
               )
             })}
+            
           </div>
+          </> // closing </> fragment here
         )
       }
 
